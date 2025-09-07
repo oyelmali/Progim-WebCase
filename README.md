@@ -127,8 +127,10 @@ Konteyner çalışmaya başladıktan sonra tarayıcıdan kontrol et:
 http://localhost
 ```
 Admin girişi için;
+```bash
 admin@progim.com
 admin123
+```
 
 not: admin yetkilendirmesi veritabanından yapılması gerekiyor. 
 
