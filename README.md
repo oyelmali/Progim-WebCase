@@ -1,8 +1,26 @@
-# Progim Web Case
+# Öğrenci ve Ders Yönetimi Uygulaması  
 
-Bu proje, öğrenci ve ders yönetimi için geliştirilmiş Fullstack Web Uygulamasıdır.
-Backend kısmı Node.js + Express.js, veritabanı ise PostgreSQL (Supabase üzerinde) çalışmaktadır.
-Frontend kısmı React + Tailwind CSS ile geliştirilmiştir.
+---
+
+## Kullanılan Teknolojiler ve Tercih Sebepleri
+
+### Backend
+- **Node.js (Express.js)** → Hızlı, ölçeklenebilir ve geniş ekosistem desteği sunduğu için tercih edildi.  
+- **JWT (JSON Web Token)** → Kimlik doğrulama ve yetkilendirme işlemleri için güvenli ve hafif bir çözüm sağladığı için kullanıldı.  
+- **PostgreSQL (Supabase)** → Güçlü ilişkisel veritabanı yapısı, ACID uyumluluğu ve kolay yönetim için Supabase üzerinden kullanıldı.  
+
+### Frontend
+- **React.js** → Bileşen tabanlı yapısı, yeniden kullanılabilirliği ve güçlü ekosistemi sayesinde tercih edildi.  
+- **Tailwind CSS** → Hızlı, esnek ve modern tasarımlar geliştirmek için utility-first yapısı nedeniyle kullanıldı.  
+- **Context API** → Uygulama genelinde hafif ve sade state yönetimi için tercih edildi.  
+- **Axios** → API çağrılarını yönetmek için basit ve güvenilir bir HTTP istemcisi olduğu için kullanıldı.  
+
+### Diğer
+- **Docker & Docker Compose** → Projenin kolayca konteynerize edilmesi, taşınabilirlik ve servislerin tek komutla ayağa kaldırılması için tercih edildi.  
+- **Unit Test** → Backend tarafındaki kritik fonksiyonların güvenilirliğini sağlamak için yazıldı.  
+- **Postman** → API geliştirme sürecinde test, doğrulama ve hata ayıklama amacıyla kullanıldı.  
+
+---
 
 ## 1. Clone Repo
 
@@ -86,6 +104,13 @@ CREATE TABLE public.enrollments (
     CONSTRAINT enrollments_course_id_fkey FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
 );
 
+INSERT INTO public.users (email, password_hash, role)
+VALUES (
+  'admin@progim.com',
+  '$2b$10$2d1pD8EoC7Ff1bMJKVQ0WueN1s7Zk2XcYlLf9q1HBgV5HjDe8LOeq', -- bcrypt hash
+  'ADMIN'
+);
+
 -- Örnek veriler (Users, Students, Courses, Enrollments)
 -- (Burada uzun INSERT scriptlerini README’ye ekledik, kopyalayıp yapıştırabilirsin)
 ```
@@ -101,6 +126,11 @@ Konteyner çalışmaya başladıktan sonra tarayıcıdan kontrol et:
 ```bash
 http://localhost
 ```
+Admin girişi için;
+admin@progim.com
+admin123
+
+not: admin yetkilendirmesi veritabanından yapılması gerekiyor. 
 
 
 
