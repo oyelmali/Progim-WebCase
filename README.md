@@ -22,21 +22,24 @@
 
 ---
 
-## 1. Clone Repo
+# 1. Clone Repo
 
 ```bash
 # Repoyu Klonla
 git clone https://github.com/oyelmali/Progim-WebCase.git
 cd Progim-WebCase
 ```
-## 2. Backend Ayarları
+# 2. Backend Ayarları
+
+## Backend klasörüne geç ve .env dosyası oluştur:
 ```bash
-# Backend klasörüne geç ve .env dosyası oluştur:
 cd backend
-nano .env 
+nano .env # elle de oluşturulabilir
+cd ..
+```
 
-
-# .env içeriği (örnek):
+## .env içeriği (örnek):
+```bash
 # PostgreSQL Ayarları
 DB_USER=postgres
 DB_HOST=localhost
@@ -45,20 +48,18 @@ DB_PASSWORD=1234
 DB_PORT=5432
 
 # Supabase bağlantı linki buraya
-DATABASE_URL=postgresql://postgres:1234@localhost:5432/ogrenci_yonetim_db
+DATABASE_URL=Supabase project > connect > connection string > transaction pooler linki buraya yapıştır (şifreyide bashsedilen kısıma yaz)
 
 # JWT Ayarları
-JWT_SECRET=supersecretkey
+JWT_SECRET=bu_cok_gizli_ve_uzun_bir_anahtar_olmalidir_12345
 JWT_EXPIRES_IN=1d
 
 # Sunucu Ayarları
 PORT=5000
-
-
 ```
 
-## 3. Supabase Veritabanı Kurulumu
-Supabase üzerinde yeni bir proje aç. Ardından veritabanına bağlan ve aşağıdaki SQL sorgusunu çalıştır:
+# 3. Supabase Veritabanı Kurulumu
+## Supabase üzerinde oluşturulan projeyi aç. Ardından veritabanına bağlan ve aşağıdaki SQL sorgusunu query sekmesinde çalıştır:
 ```bash
 -- Önce tabloları temizle (varsa)
 DROP TABLE IF EXISTS enrollments CASCADE;
@@ -115,18 +116,18 @@ VALUES (
 -- (Burada uzun INSERT scriptlerini README’ye ekledik, kopyalayıp yapıştırabilirsin)
 ```
 
-## 4. Docker ile Çalıştırma
-Projeyi Docker Compose ile çalıştırmak için:
+# 4. Docker ile Çalıştırma
+## Projeyi Docker Compose ile çalıştırmak için proje dizininde (docker-compose.yml olan dizin):
 ```bash
 docker-compose up --build
 ```
 
-## 5. Uygulamayı Test Et
-Konteyner çalışmaya başladıktan sonra tarayıcıdan kontrol et:
+# 5. Uygulamayı Test Et
+## Konteyner çalışmaya başladıktan sonra tarayıcıdan kontrol et:
 ```bash
 http://localhost
 ```
-Admin girişi için;
+## Admin girişi için;
 ```bash
 admin@progim.com
 admin123
